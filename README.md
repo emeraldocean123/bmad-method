@@ -1,6 +1,6 @@
-# BMAD Method - Joseph's Custom Fork
+# BMAD Method - Custom Fork
 
-This is Joseph's customized fork of the [BMAD Method](https://github.com/bmad-code-org/BMAD-METHOD) with custom NixOS expert extensions and specialized agent configurations.
+This is a customized fork of the [BMAD Method](https://github.com/bmad-code-org/BMAD-METHOD) with custom NixOS expert extensions and specialized agent configurations.
 
 ## Custom Extensions
 
@@ -93,4 +93,4 @@ MIT License - See original BMAD Method repository for full license details.
 
 ---
 
-_This fork extends BMAD Method with specialized NixOS expertise and project-specific agent configurations tailored for Joseph's development workflow._
+_This fork extends BMAD Method with specialized NixOS expertise and project-specific agent configurations for enhanced development workflows._

@@ -158,14 +158,16 @@ I specialize in creating intelligent, project-specific BMAD agents that truly un
 ## Agent Generation Process
 
 ### Phase 1: Project Analysis
+
 - File structure examination
-- Technology stack identification  
+- Technology stack identification
 - README and documentation parsing
 - Code pattern recognition
 - Dependency analysis
 - Build system understanding
 
 ### Phase 2: MCP Server Discovery
+
 - Search for relevant MCP servers
 - Analyze MCP capabilities
 - Map MCP tools to project needs
@@ -173,6 +175,7 @@ I specialize in creating intelligent, project-specific BMAD agents that truly un
 - Research custom MCP possibilities
 
 ### Phase 3: Domain Research
+
 - Framework documentation research
 - API specification gathering
 - Best practices investigation
@@ -181,6 +184,7 @@ I specialize in creating intelligent, project-specific BMAD agents that truly un
 - Security considerations
 
 ### Phase 4: Agent Creation
+
 - Persona development
 - Command structure design
 - Knowledge base compilation
@@ -192,7 +196,7 @@ I specialize in creating intelligent, project-specific BMAD agents that truly un
 
 ```
 User: "Analyze my React project and create an agent"
-AgentForge: 
+AgentForge:
 1. Scanning project structure...
 2. Identified: React 18, TypeScript, Redux, Material-UI
 3. Researching React best practices...

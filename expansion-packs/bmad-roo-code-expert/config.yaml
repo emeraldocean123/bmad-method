@@ -1,0 +1,137 @@
+expansion:
+  name: "bmad-roo-code-expert"
+  version: "1.0.0"
+  description: "Roo Code AI Development Expert - Autonomous coding with multi-mode capabilities"
+  category: "development-tools"
+  tags:
+    - "ai-development"
+    - "autonomous-coding"
+    - "roo-code"
+    - "vs-code"
+    - "mcp-integration"
+    - "custom-modes"
+
+  compatibility:
+    bmad_version: ">=5.0.0"
+    node_version: ">=20.10.0"
+
+  dependencies:
+    external:
+      - name: "VS Code"
+        version: ">=1.85.0"
+        description: "Visual Studio Code editor"
+        required: true
+      - name: "Node.js"
+        version: ">=20.19.2"
+        description: "JavaScript runtime for Roo Code"
+        required: true
+      - name: "pnpm"
+        version: ">=10.8.1"
+        description: "Package manager for Roo Code development"
+        required: false
+
+    mcp_servers:
+      - name: "mcp-git"
+        description: "Git repository operations"
+        installation: "npm install -g @modelcontextprotocol/mcp-git"
+        required: false
+      - name: "mcp-vscode"
+        description: "VS Code editor control"
+        installation: "npm install -g @modelcontextprotocol/mcp-vscode"
+        required: false
+      - name: "mcp-http"
+        description: "HTTP requests and API testing"
+        installation: "npm install -g @modelcontextprotocol/mcp-http"
+        required: false
+
+  agents:
+    primary:
+      - id: "roo-code-expert"
+        name: "RooCodePro"
+        description: "Roo Code Development Expert & AI Automation Specialist"
+        file: "agents/roo-code-expert.md"
+        capabilities:
+          - "Roo Code setup and configuration"
+          - "Custom mode development"
+          - "MCP server integration"
+          - "AI-assisted development workflows"
+          - "Performance optimization"
+          - "Team collaboration setup"
+
+  tasks:
+    setup:
+      - id: "setup-roo-code"
+        name: "Setup Roo Code"
+        description: "Install and configure Roo Code with optimal settings"
+        file: "tasks/setup-roo-code.md"
+        category: "installation"
+
+    customization:
+      - id: "create-custom-mode"
+        name: "Create Custom Mode"
+        description: "Design and implement custom Roo Code modes"
+        file: "tasks/create-custom-mode.md"
+        category: "development"
+
+      - id: "configure-mcp"
+        name: "Configure MCP"
+        description: "Set up Model Context Protocol integrations"
+        file: "tasks/configure-mcp.md"
+        category: "integration"
+
+  templates:
+    - id: "custom-mode-template"
+      name: "Custom Mode Template"
+      description: "Template for creating new Roo Code modes"
+      file: "templates/custom-mode-template.md"
+      type: "development"
+
+  examples:
+    - id: "workflow-examples"
+      name: "Roo Code Workflow Examples"
+      description: "Practical examples of Roo Code development workflows"
+      file: "examples/roo-code-workflow-examples.md"
+      type: "documentation"
+
+  features:
+    ai_integration:
+      - "Multi-mode AI development (Code, Architect, Ask, Debug)"
+      - "Custom mode creation for specialized tasks"
+      - "MCP server integration for external tools"
+      - "Autonomous development workflows"
+
+    development_acceleration:
+      - "Smart code generation with context awareness"
+      - "Automated debugging and problem diagnosis"
+      - "Technical architecture planning assistance"
+      - "Performance optimization recommendations"
+
+    team_collaboration:
+      - "Shared custom modes for consistency"
+      - "Team workflow standardization"
+      - "Knowledge sharing through Ask mode"
+      - "Collaborative development processes"
+
+  use_cases:
+    - "Full-stack web application development"
+    - "API design and implementation"
+    - "System architecture planning"
+    - "Code review and optimization"
+    - "Bug diagnosis and resolution"
+    - "Documentation generation"
+    - "Team onboarding and training"
+
+  installation:
+    steps:
+      - "Install VS Code (1.85.0 or higher)"
+      - "Install Node.js (20.19.2 or higher)"
+      - "Install Roo Code extension from VS Code marketplace"
+      - "Configure AI model provider (OpenAI, Anthropic, etc.)"
+      - "Set up MCP servers for enhanced capabilities"
+      - "Create custom modes for project-specific needs"
+
+  documentation:
+    getting_started: "Use 'setup-roo-code' task to begin installation"
+    agent_usage: "Activate 'roo-code-expert' agent for comprehensive assistance"
+    customization: "Use 'create-custom-mode' task for specialized workflows"
+    integration: "Use 'configure-mcp' task for external tool connections"

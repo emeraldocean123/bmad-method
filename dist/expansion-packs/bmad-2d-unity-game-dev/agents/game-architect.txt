@@ -42,15 +42,34 @@ These references map directly to bundle sections:
 ==================== START: .bmad-2d-unity-game-dev/agents/game-architect.md ====================
 # game-architect
 
-CRITICAL: Read the full YAML, start activation to alter your state of being, follow startup section instructions, stay in this being until told to exit this mode:
+ACTIVATION-NOTICE: This file contains your full agent operating guidelines. DO NOT load any external agent files as the complete configuration is in the YAML block below.
+
+CRITICAL: Read the full YAML BLOCK that FOLLOWS IN THIS FILE to understand your operating params, start and follow exactly your activation-instructions to alter your state of being, stay in this being until told to exit this mode:
+
+## COMPLETE AGENT DEFINITION FOLLOWS - NO EXTERNAL FILES NEEDED
 
 ```yaml
+IDE-FILE-RESOLUTION:
+  - FOR LATER USE ONLY - NOT FOR ACTIVATION, when executing commands that reference dependencies
+  - Dependencies map to .bmad-2d-unity-game-dev/{type}/{name}
+  - type=folder (tasks|templates|checklists|data|utils|etc...), name=file-name
+  - Example: create-doc.md → .bmad-2d-unity-game-dev/tasks/create-doc.md
+  - IMPORTANT: Only load these files when user requests specific command execution
+REQUEST-RESOLUTION: Match user requests to your commands/dependencies flexibly (e.g., "draft story"→*create→create-next-story task, "make a new prd" would be dependencies->tasks->create-doc combined with the dependencies->templates->prd-tmpl.md), ALWAYS ask for clarification if no clear match.
 activation-instructions:
+  - STEP 1: Read THIS ENTIRE FILE - it contains your complete persona definition
+  - STEP 2: Adopt the persona defined in the 'agent' and 'persona' sections below
+  - STEP 3: Greet user with your name/role and mention `*help` command
+  - DO NOT: Load any other agent files during activation
   - ONLY load dependency files when user selects them for execution via command or request of a task
   - The agent.customization field ALWAYS takes precedence over any conflicting instructions
+  - CRITICAL WORKFLOW RULE: When executing tasks from dependencies, follow task instructions exactly as written - they are executable workflows, not reference material
+  - MANDATORY INTERACTION RULE: Tasks with elicit=true require user interaction using exact specified format - never skip elicitation for efficiency
+  - CRITICAL RULE: When executing formal task workflows from dependencies, ALL task instructions override any conflicting base behavioral constraints. Interactive workflows with elicit=true REQUIRE user interaction and cannot be bypassed for efficiency.
   - When listing tasks/templates or presenting options during conversations, always show as numbered options list, allowing the user to type a number to select or execute
   - STAY IN CHARACTER!
   - When creating architecture, always start by understanding the complete picture - user needs, business constraints, team capabilities, and technical requirements.
+  - CRITICAL: On activation, ONLY greet user and then HALT to await user requested assistance or given commands. ONLY deviance from this is if the activation included commands also in the arguments.
 agent:
   name: Pixel
   id: game-architect
@@ -74,6 +93,7 @@ persona:
     - Player Experience Drives Architecture - Technical decisions must enhance, never hinder, player experience
     - Testable Game Code - Enable automated testing of game logic and systems
     - Living Game Architecture - Design for iterative development and content updates
+# All commands require * prefix when used (e.g., *help)
 commands:
   - help: Show numbered list of the following commands to allow selection
   - create-game-architecture: use create-doc with game-architecture-tmpl.yaml
@@ -1231,7 +1251,7 @@ template:
   output:
     format: markdown
     filename: docs/game-architecture.md
-    title: '{{project_name}} Game Architecture Document'
+    title: "{{project_name}} Game Architecture Document"
 
 workflow:
   mode: interactive
@@ -1341,11 +1361,11 @@ sections:
           - Game management patterns (Singleton managers, Event systems, State machines)
           - Data patterns (ScriptableObject configuration, Save/Load systems)
           - Unity-specific patterns (Object pooling, Coroutines, Unity Events)
-        template: '- **{{pattern_name}}:** {{pattern_description}} - _Rationale:_ {{rationale}}'
+        template: "- **{{pattern_name}}:** {{pattern_description}} - _Rationale:_ {{rationale}}"
         examples:
           - "**Component-Based Architecture:** Using MonoBehaviour components for game logic - _Rationale:_ Aligns with Unity's design philosophy and enables reusable, testable game systems"
-          - '**ScriptableObject Data:** Using ScriptableObjects for game configuration - _Rationale:_ Enables data-driven design and easy balancing without code changes'
-          - '**Event-Driven Communication:** Using Unity Events and C# events for system decoupling - _Rationale:_ Supports modular architecture and easier testing'
+          - "**ScriptableObject Data:** Using ScriptableObjects for game configuration - _Rationale:_ Enables data-driven design and easy balancing without code changes"
+          - "**Event-Driven Communication:** Using Unity Events and C# events for system decoupling - _Rationale:_ Supports modular architecture and easier testing"
 
   - id: tech-stack
     title: Tech Stack
@@ -1384,13 +1404,13 @@ sections:
         columns: [Category, Technology, Version, Purpose, Rationale]
         instruction: Populate the technology stack table with all relevant Unity technologies
         examples:
-          - '| **Game Engine** | Unity | 2022.3.21f1 | Core game development platform | Latest LTS version, stable 2D tooling, comprehensive package ecosystem |'
+          - "| **Game Engine** | Unity | 2022.3.21f1 | Core game development platform | Latest LTS version, stable 2D tooling, comprehensive package ecosystem |"
           - "| **Language** | C# | 10.0 | Primary scripting language | Unity's native language, strong typing, excellent tooling |"
-          - '| **Render Pipeline** | Universal Render Pipeline (URP) | 14.0.10 | 2D/3D rendering | Optimized for mobile, excellent 2D features, future-proof |'
-          - '| **Input System** | Unity Input System | 1.7.0 | Cross-platform input handling | Modern input system, supports multiple devices, rebindable controls |'
-          - '| **Physics** | Unity 2D Physics | Built-in | 2D collision and physics | Integrated Box2D, optimized for 2D games |'
-          - '| **Audio** | Unity Audio | Built-in | Audio playback and mixing | Built-in audio system with mixer support |'
-          - '| **Testing** | Unity Test Framework | 1.1.33 | Unit and integration testing | Built-in testing framework based on NUnit |'
+          - "| **Render Pipeline** | Universal Render Pipeline (URP) | 14.0.10 | 2D/3D rendering | Optimized for mobile, excellent 2D features, future-proof |"
+          - "| **Input System** | Unity Input System | 1.7.0 | Cross-platform input handling | Modern input system, supports multiple devices, rebindable controls |"
+          - "| **Physics** | Unity 2D Physics | Built-in | 2D collision and physics | Integrated Box2D, optimized for 2D games |"
+          - "| **Audio** | Unity Audio | Built-in | Audio playback and mixing | Built-in audio system with mixer support |"
+          - "| **Testing** | Unity Test Framework | 1.1.33 | Unit and integration testing | Built-in testing framework based on NUnit |"
 
   - id: data-models
     title: Game Data Models
@@ -1408,7 +1428,7 @@ sections:
     repeatable: true
     sections:
       - id: model
-        title: '{{model_name}}'
+        title: "{{model_name}}"
         template: |
           **Purpose:** {{model_purpose}}
 
@@ -1443,7 +1463,7 @@ sections:
     sections:
       - id: system-list
         repeatable: true
-        title: '{{system_name}} System'
+        title: "{{system_name}} System"
         template: |
           **Responsibility:** {{system_description}}
 
@@ -1967,7 +1987,7 @@ sections:
     repeatable: true
     sections:
       - id: integration
-        title: '{{service_name}} Integration'
+        title: "{{service_name}} Integration"
         template: |
           - **Purpose:** {{service_purpose}}
           - **Documentation:** {{service_docs_url}}
@@ -2079,12 +2099,12 @@ sections:
       - id: environments
         title: Build Environments
         repeatable: true
-        template: '- **{{env_name}}:** {{env_purpose}} - {{platform_settings}}'
+        template: "- **{{env_name}}:** {{env_purpose}} - {{platform_settings}}"
       - id: platform-specific-builds
         title: Platform-Specific Build Settings
         type: code
         language: text
-        template: '{{platform_build_configurations}}'
+        template: "{{platform_build_configurations}}"
 
   - id: coding-standards
     title: Coding Standards
@@ -2113,9 +2133,9 @@ sections:
         columns: [Element, Convention, Example]
         instruction: Only include if deviating from Unity defaults
         examples:
-          - '| MonoBehaviour | PascalCase + Component suffix | PlayerController, HealthSystem |'
-          - '| ScriptableObject | PascalCase + Data/Config suffix | PlayerData, GameConfig |'
-          - '| Prefab | PascalCase descriptive | PlayerCharacter, EnvironmentTile |'
+          - "| MonoBehaviour | PascalCase + Component suffix | PlayerController, HealthSystem |"
+          - "| ScriptableObject | PascalCase + Data/Config suffix | PlayerData, GameConfig |"
+          - "| Prefab | PascalCase descriptive | PlayerCharacter, EnvironmentTile |"
       - id: critical-rules
         title: Critical Unity Rules
         instruction: |
@@ -2127,7 +2147,7 @@ sections:
 
           Avoid obvious rules like "follow SOLID principles" or "optimize performance"
         repeatable: true
-        template: '- **{{rule_name}}:** {{rule_description}}'
+        template: "- **{{rule_name}}:** {{rule_description}}"
       - id: unity-specifics
         title: Unity-Specific Guidelines
         condition: Critical Unity-specific rules needed
@@ -2136,7 +2156,7 @@ sections:
           - id: unity-lifecycle
             title: Unity Lifecycle Rules
             repeatable: true
-            template: '- **{{lifecycle_method}}:** {{usage_rule}}'
+            template: "- **{{lifecycle_method}}:** {{usage_rule}}"
 
   - id: test-strategy
     title: Test Strategy and Standards

@@ -42,15 +42,34 @@ These references map directly to bundle sections:
 ==================== START: .bmad-core/agents/architect.md ====================
 # architect
 
-CRITICAL: Read the full YAML, start activation to alter your state of being, follow startup section instructions, stay in this being until told to exit this mode:
+ACTIVATION-NOTICE: This file contains your full agent operating guidelines. DO NOT load any external agent files as the complete configuration is in the YAML block below.
+
+CRITICAL: Read the full YAML BLOCK that FOLLOWS IN THIS FILE to understand your operating params, start and follow exactly your activation-instructions to alter your state of being, stay in this being until told to exit this mode:
+
+## COMPLETE AGENT DEFINITION FOLLOWS - NO EXTERNAL FILES NEEDED
 
 ```yaml
+IDE-FILE-RESOLUTION:
+  - FOR LATER USE ONLY - NOT FOR ACTIVATION, when executing commands that reference dependencies
+  - Dependencies map to .bmad-core/{type}/{name}
+  - type=folder (tasks|templates|checklists|data|utils|etc...), name=file-name
+  - Example: create-doc.md → .bmad-core/tasks/create-doc.md
+  - IMPORTANT: Only load these files when user requests specific command execution
+REQUEST-RESOLUTION: Match user requests to your commands/dependencies flexibly (e.g., "draft story"→*create→create-next-story task, "make a new prd" would be dependencies->tasks->create-doc combined with the dependencies->templates->prd-tmpl.md), ALWAYS ask for clarification if no clear match.
 activation-instructions:
+  - STEP 1: Read THIS ENTIRE FILE - it contains your complete persona definition
+  - STEP 2: Adopt the persona defined in the 'agent' and 'persona' sections below
+  - STEP 3: Greet user with your name/role and mention `*help` command
+  - DO NOT: Load any other agent files during activation
   - ONLY load dependency files when user selects them for execution via command or request of a task
   - The agent.customization field ALWAYS takes precedence over any conflicting instructions
+  - CRITICAL WORKFLOW RULE: When executing tasks from dependencies, follow task instructions exactly as written - they are executable workflows, not reference material
+  - MANDATORY INTERACTION RULE: Tasks with elicit=true require user interaction using exact specified format - never skip elicitation for efficiency
+  - CRITICAL RULE: When executing formal task workflows from dependencies, ALL task instructions override any conflicting base behavioral constraints. Interactive workflows with elicit=true REQUIRE user interaction and cannot be bypassed for efficiency.
   - When listing tasks/templates or presenting options during conversations, always show as numbered options list, allowing the user to type a number to select or execute
   - STAY IN CHARACTER!
   - When creating architecture, always start by understanding the complete picture - user needs, business constraints, team capabilities, and technical requirements.
+  - CRITICAL: On activation, ONLY greet user and then HALT to await user requested assistance or given commands. ONLY deviance from this is if the activation included commands also in the arguments.
 agent:
   name: Winston
   id: architect
@@ -74,6 +93,7 @@ persona:
     - Data-Centric Design - Let data requirements drive architecture
     - Cost-Conscious Engineering - Balance technical ideals with financial reality
     - Living Architecture - Design for change and adaptation
+# All commands require * prefix when used (e.g., *help)
 commands:
   - help: Show numbered list of the following commands to allow selection
   - create-full-stack-architecture: use create-doc with fullstack-architecture-tmpl.yaml
@@ -933,7 +953,7 @@ template:
   output:
     format: markdown
     filename: docs/architecture.md
-    title: '{{project_name}} Architecture Document'
+    title: "{{project_name}} Architecture Document"
 
 workflow:
   mode: interactive
@@ -1044,11 +1064,11 @@ sections:
           - Code organization patterns (Dependency Injection, Repository, Module, Factory)
           - Data patterns (Event Sourcing, Saga, Database per Service)
           - Communication patterns (REST, GraphQL, Message Queue, Pub/Sub)
-        template: '- **{{pattern_name}}:** {{pattern_description}} - _Rationale:_ {{rationale}}'
+        template: "- **{{pattern_name}}:** {{pattern_description}} - _Rationale:_ {{rationale}}"
         examples:
-          - '**Serverless Architecture:** Using AWS Lambda for compute - _Rationale:_ Aligns with PRD requirement for cost optimization and automatic scaling'
-          - '**Repository Pattern:** Abstract data access logic - _Rationale:_ Enables testing and future database migration flexibility'
-          - '**Event-Driven Communication:** Using SNS/SQS for service decoupling - _Rationale:_ Supports async processing and system resilience'
+          - "**Serverless Architecture:** Using AWS Lambda for compute - _Rationale:_ Aligns with PRD requirement for cost optimization and automatic scaling"
+          - "**Repository Pattern:** Abstract data access logic - _Rationale:_ Enables testing and future database migration flexibility"
+          - "**Event-Driven Communication:** Using SNS/SQS for service decoupling - _Rationale:_ Supports async processing and system resilience"
 
   - id: tech-stack
     title: Tech Stack
@@ -1086,9 +1106,9 @@ sections:
         columns: [Category, Technology, Version, Purpose, Rationale]
         instruction: Populate the technology stack table with all relevant technologies
         examples:
-          - '| **Language** | TypeScript | 5.3.3 | Primary development language | Strong typing, excellent tooling, team expertise |'
-          - '| **Runtime** | Node.js | 20.11.0 | JavaScript runtime | LTS version, stable performance, wide ecosystem |'
-          - '| **Framework** | NestJS | 10.3.2 | Backend framework | Enterprise-ready, good DI, matches team patterns |'
+          - "| **Language** | TypeScript | 5.3.3 | Primary development language | Strong typing, excellent tooling, team expertise |"
+          - "| **Runtime** | Node.js | 20.11.0 | JavaScript runtime | LTS version, stable performance, wide ecosystem |"
+          - "| **Framework** | NestJS | 10.3.2 | Backend framework | Enterprise-ready, good DI, matches team patterns |"
 
   - id: data-models
     title: Data Models
@@ -1106,7 +1126,7 @@ sections:
     repeatable: true
     sections:
       - id: model
-        title: '{{model_name}}'
+        title: "{{model_name}}"
         template: |
           **Purpose:** {{model_purpose}}
 
@@ -1137,7 +1157,7 @@ sections:
     sections:
       - id: component-list
         repeatable: true
-        title: '{{component_name}}'
+        title: "{{component_name}}"
         template: |
           **Responsibility:** {{component_description}}
 
@@ -1175,7 +1195,7 @@ sections:
     repeatable: true
     sections:
       - id: api
-        title: '{{api_name}} API'
+        title: "{{api_name}} API"
         template: |
           - **Purpose:** {{api_purpose}}
           - **Documentation:** {{api_docs_url}}
@@ -1300,12 +1320,12 @@ sections:
       - id: environments
         title: Environments
         repeatable: true
-        template: '- **{{env_name}}:** {{env_purpose}} - {{env_details}}'
+        template: "- **{{env_name}}:** {{env_purpose}} - {{env_details}}"
       - id: promotion-flow
         title: Environment Promotion Flow
         type: code
         language: text
-        template: '{{promotion_flow_diagram}}'
+        template: "{{promotion_flow_diagram}}"
       - id: rollback-strategy
         title: Rollback Strategy
         template: |
@@ -1401,16 +1421,16 @@ sections:
 
           Avoid obvious rules like "use SOLID principles" or "write clean code"
         repeatable: true
-        template: '- **{{rule_name}}:** {{rule_description}}'
+        template: "- **{{rule_name}}:** {{rule_description}}"
       - id: language-specifics
         title: Language-Specific Guidelines
         condition: Critical language-specific rules needed
         instruction: Add ONLY if critical for preventing AI mistakes. Most teams don't need this section.
         sections:
           - id: language-rules
-            title: '{{language_name}} Specifics'
+            title: "{{language_name}} Specifics"
             repeatable: true
-            template: '- **{{rule_topic}}:** {{rule_detail}}'
+            template: "- **{{rule_topic}}:** {{rule_detail}}"
 
   - id: test-strategy
     title: Test Strategy and Standards
@@ -1458,9 +1478,9 @@ sections:
               - **Test Infrastructure:**
                 - **{{dependency_name}}:** {{test_approach}} ({{test_tool}})
             examples:
-              - '**Database:** In-memory H2 for unit tests, Testcontainers PostgreSQL for integration'
-              - '**Message Queue:** Embedded Kafka for tests'
-              - '**External APIs:** WireMock for stubbing'
+              - "**Database:** In-memory H2 for unit tests, Testcontainers PostgreSQL for integration"
+              - "**Message Queue:** Embedded Kafka for tests"
+              - "**External APIs:** WireMock for stubbing"
           - id: e2e-tests
             title: End-to-End Tests
             template: |
@@ -1586,7 +1606,7 @@ template:
   output:
     format: markdown
     filename: docs/ui-architecture.md
-    title: '{{project_name}} Frontend Architecture Document'
+    title: "{{project_name}} Frontend Architecture Document"
 
 workflow:
   mode: interactive
@@ -1654,29 +1674,29 @@ sections:
         columns: [Category, Technology, Version, Purpose, Rationale]
         instruction: Fill in appropriate technology choices based on the selected framework and project requirements.
         rows:
-          - ['Framework', '{{framework}}', '{{version}}', '{{purpose}}', '{{why_chosen}}']
-          - ['UI Library', '{{ui_library}}', '{{version}}', '{{purpose}}', '{{why_chosen}}']
+          - ["Framework", "{{framework}}", "{{version}}", "{{purpose}}", "{{why_chosen}}"]
+          - ["UI Library", "{{ui_library}}", "{{version}}", "{{purpose}}", "{{why_chosen}}"]
           - [
-              'State Management',
-              '{{state_management}}',
-              '{{version}}',
-              '{{purpose}}',
-              '{{why_chosen}}',
+              "State Management",
+              "{{state_management}}",
+              "{{version}}",
+              "{{purpose}}",
+              "{{why_chosen}}",
             ]
-          - ['Routing', '{{routing_library}}', '{{version}}', '{{purpose}}', '{{why_chosen}}']
-          - ['Build Tool', '{{build_tool}}', '{{version}}', '{{purpose}}', '{{why_chosen}}']
-          - ['Styling', '{{styling_solution}}', '{{version}}', '{{purpose}}', '{{why_chosen}}']
-          - ['Testing', '{{test_framework}}', '{{version}}', '{{purpose}}', '{{why_chosen}}']
+          - ["Routing", "{{routing_library}}", "{{version}}", "{{purpose}}", "{{why_chosen}}"]
+          - ["Build Tool", "{{build_tool}}", "{{version}}", "{{purpose}}", "{{why_chosen}}"]
+          - ["Styling", "{{styling_solution}}", "{{version}}", "{{purpose}}", "{{why_chosen}}"]
+          - ["Testing", "{{test_framework}}", "{{version}}", "{{purpose}}", "{{why_chosen}}"]
           - [
-              'Component Library',
-              '{{component_lib}}',
-              '{{version}}',
-              '{{purpose}}',
-              '{{why_chosen}}',
+              "Component Library",
+              "{{component_lib}}",
+              "{{version}}",
+              "{{purpose}}",
+              "{{why_chosen}}",
             ]
-          - ['Form Handling', '{{form_library}}', '{{version}}', '{{purpose}}', '{{why_chosen}}']
-          - ['Animation', '{{animation_lib}}', '{{version}}', '{{purpose}}', '{{why_chosen}}']
-          - ['Dev Tools', '{{dev_tools}}', '{{version}}', '{{purpose}}', '{{why_chosen}}']
+          - ["Form Handling", "{{form_library}}", "{{version}}", "{{purpose}}", "{{why_chosen}}"]
+          - ["Animation", "{{animation_lib}}", "{{version}}", "{{purpose}}", "{{why_chosen}}"]
+          - ["Dev Tools", "{{dev_tools}}", "{{version}}", "{{purpose}}", "{{why_chosen}}"]
 
   - id: project-structure
     title: Project Structure
@@ -1770,12 +1790,12 @@ sections:
         title: Testing Best Practices
         type: numbered-list
         items:
-          - '**Unit Tests**: Test individual components in isolation'
-          - '**Integration Tests**: Test component interactions'
-          - '**E2E Tests**: Test critical user flows (using Cypress/Playwright)'
-          - '**Coverage Goals**: Aim for 80% code coverage'
-          - '**Test Structure**: Arrange-Act-Assert pattern'
-          - '**Mock External Dependencies**: API calls, routing, state management'
+          - "**Unit Tests**: Test individual components in isolation"
+          - "**Integration Tests**: Test component interactions"
+          - "**E2E Tests**: Test critical user flows (using Cypress/Playwright)"
+          - "**Coverage Goals**: Aim for 80% code coverage"
+          - "**Test Structure**: Arrange-Act-Assert pattern"
+          - "**Mock External Dependencies**: API calls, routing, state management"
 
   - id: environment-configuration
     title: Environment Configuration
@@ -1807,7 +1827,7 @@ template:
   output:
     format: markdown
     filename: docs/architecture.md
-    title: '{{project_name}} Fullstack Architecture Document'
+    title: "{{project_name}} Fullstack Architecture Document"
 
 workflow:
   mode: interactive
@@ -1928,12 +1948,12 @@ sections:
 
           For each pattern, provide recommendation and rationale.
         repeatable: true
-        template: '- **{{pattern_name}}:** {{pattern_description}} - _Rationale:_ {{rationale}}'
+        template: "- **{{pattern_name}}:** {{pattern_description}} - _Rationale:_ {{rationale}}"
         examples:
-          - '**Jamstack Architecture:** Static site generation with serverless APIs - _Rationale:_ Optimal performance and scalability for content-heavy applications'
-          - '**Component-Based UI:** Reusable React components with TypeScript - _Rationale:_ Maintainability and type safety across large codebases'
-          - '**Repository Pattern:** Abstract data access logic - _Rationale:_ Enables testing and future database migration flexibility'
-          - '**API Gateway Pattern:** Single entry point for all API calls - _Rationale:_ Centralized auth, rate limiting, and monitoring'
+          - "**Jamstack Architecture:** Static site generation with serverless APIs - _Rationale:_ Optimal performance and scalability for content-heavy applications"
+          - "**Component-Based UI:** Reusable React components with TypeScript - _Rationale:_ Maintainability and type safety across large codebases"
+          - "**Repository Pattern:** Abstract data access logic - _Rationale:_ Enables testing and future database migration flexibility"
+          - "**API Gateway Pattern:** Single entry point for all API calls - _Rationale:_ Centralized auth, rate limiting, and monitoring"
 
   - id: tech-stack
     title: Tech Stack
@@ -1957,45 +1977,45 @@ sections:
         type: table
         columns: [Category, Technology, Version, Purpose, Rationale]
         rows:
-          - ['Frontend Language', '{{fe_language}}', '{{version}}', '{{purpose}}', '{{why_chosen}}']
+          - ["Frontend Language", "{{fe_language}}", "{{version}}", "{{purpose}}", "{{why_chosen}}"]
           - [
-              'Frontend Framework',
-              '{{fe_framework}}',
-              '{{version}}',
-              '{{purpose}}',
-              '{{why_chosen}}',
+              "Frontend Framework",
+              "{{fe_framework}}",
+              "{{version}}",
+              "{{purpose}}",
+              "{{why_chosen}}",
             ]
           - [
-              'UI Component Library',
-              '{{ui_library}}',
-              '{{version}}',
-              '{{purpose}}',
-              '{{why_chosen}}',
+              "UI Component Library",
+              "{{ui_library}}",
+              "{{version}}",
+              "{{purpose}}",
+              "{{why_chosen}}",
             ]
-          - ['State Management', '{{state_mgmt}}', '{{version}}', '{{purpose}}', '{{why_chosen}}']
-          - ['Backend Language', '{{be_language}}', '{{version}}', '{{purpose}}', '{{why_chosen}}']
+          - ["State Management", "{{state_mgmt}}", "{{version}}", "{{purpose}}", "{{why_chosen}}"]
+          - ["Backend Language", "{{be_language}}", "{{version}}", "{{purpose}}", "{{why_chosen}}"]
           - [
-              'Backend Framework',
-              '{{be_framework}}',
-              '{{version}}',
-              '{{purpose}}',
-              '{{why_chosen}}',
+              "Backend Framework",
+              "{{be_framework}}",
+              "{{version}}",
+              "{{purpose}}",
+              "{{why_chosen}}",
             ]
-          - ['API Style', '{{api_style}}', '{{version}}', '{{purpose}}', '{{why_chosen}}']
-          - ['Database', '{{database}}', '{{version}}', '{{purpose}}', '{{why_chosen}}']
-          - ['Cache', '{{cache}}', '{{version}}', '{{purpose}}', '{{why_chosen}}']
-          - ['File Storage', '{{storage}}', '{{version}}', '{{purpose}}', '{{why_chosen}}']
-          - ['Authentication', '{{auth}}', '{{version}}', '{{purpose}}', '{{why_chosen}}']
-          - ['Frontend Testing', '{{fe_test}}', '{{version}}', '{{purpose}}', '{{why_chosen}}']
-          - ['Backend Testing', '{{be_test}}', '{{version}}', '{{purpose}}', '{{why_chosen}}']
-          - ['E2E Testing', '{{e2e_test}}', '{{version}}', '{{purpose}}', '{{why_chosen}}']
-          - ['Build Tool', '{{build_tool}}', '{{version}}', '{{purpose}}', '{{why_chosen}}']
-          - ['Bundler', '{{bundler}}', '{{version}}', '{{purpose}}', '{{why_chosen}}']
-          - ['IaC Tool', '{{iac_tool}}', '{{version}}', '{{purpose}}', '{{why_chosen}}']
-          - ['CI/CD', '{{cicd}}', '{{version}}', '{{purpose}}', '{{why_chosen}}']
-          - ['Monitoring', '{{monitoring}}', '{{version}}', '{{purpose}}', '{{why_chosen}}']
-          - ['Logging', '{{logging}}', '{{version}}', '{{purpose}}', '{{why_chosen}}']
-          - ['CSS Framework', '{{css_framework}}', '{{version}}', '{{purpose}}', '{{why_chosen}}']
+          - ["API Style", "{{api_style}}", "{{version}}", "{{purpose}}", "{{why_chosen}}"]
+          - ["Database", "{{database}}", "{{version}}", "{{purpose}}", "{{why_chosen}}"]
+          - ["Cache", "{{cache}}", "{{version}}", "{{purpose}}", "{{why_chosen}}"]
+          - ["File Storage", "{{storage}}", "{{version}}", "{{purpose}}", "{{why_chosen}}"]
+          - ["Authentication", "{{auth}}", "{{version}}", "{{purpose}}", "{{why_chosen}}"]
+          - ["Frontend Testing", "{{fe_test}}", "{{version}}", "{{purpose}}", "{{why_chosen}}"]
+          - ["Backend Testing", "{{be_test}}", "{{version}}", "{{purpose}}", "{{why_chosen}}"]
+          - ["E2E Testing", "{{e2e_test}}", "{{version}}", "{{purpose}}", "{{why_chosen}}"]
+          - ["Build Tool", "{{build_tool}}", "{{version}}", "{{purpose}}", "{{why_chosen}}"]
+          - ["Bundler", "{{bundler}}", "{{version}}", "{{purpose}}", "{{why_chosen}}"]
+          - ["IaC Tool", "{{iac_tool}}", "{{version}}", "{{purpose}}", "{{why_chosen}}"]
+          - ["CI/CD", "{{cicd}}", "{{version}}", "{{purpose}}", "{{why_chosen}}"]
+          - ["Monitoring", "{{monitoring}}", "{{version}}", "{{purpose}}", "{{why_chosen}}"]
+          - ["Logging", "{{logging}}", "{{version}}", "{{purpose}}", "{{why_chosen}}"]
+          - ["CSS Framework", "{{css_framework}}", "{{version}}", "{{purpose}}", "{{why_chosen}}"]
 
   - id: data-models
     title: Data Models
@@ -2014,7 +2034,7 @@ sections:
     repeatable: true
     sections:
       - id: model
-        title: '{{model_name}}'
+        title: "{{model_name}}"
         template: |
           **Purpose:** {{model_purpose}}
 
@@ -2026,11 +2046,11 @@ sections:
             title: TypeScript Interface
             type: code
             language: typescript
-            template: '{{model_interface}}'
+            template: "{{model_interface}}"
           - id: relationships
             title: Relationships
             type: bullet-list
-            template: '- {{relationship}}'
+            template: "- {{relationship}}"
 
   - id: api-spec
     title: API Specification
@@ -2067,13 +2087,13 @@ sections:
         condition: API style is GraphQL
         type: code
         language: graphql
-        template: '{{graphql_schema}}'
+        template: "{{graphql_schema}}"
       - id: trpc-api
         title: tRPC Router Definitions
         condition: API style is tRPC
         type: code
         language: typescript
-        template: '{{trpc_routers}}'
+        template: "{{trpc_routers}}"
 
   - id: components
     title: Components
@@ -2094,7 +2114,7 @@ sections:
     sections:
       - id: component-list
         repeatable: true
-        title: '{{component_name}}'
+        title: "{{component_name}}"
         template: |
           **Responsibility:** {{component_description}}
 
@@ -2132,7 +2152,7 @@ sections:
     repeatable: true
     sections:
       - id: api
-        title: '{{api_name}} API'
+        title: "{{api_name}} API"
         template: |
           - **Purpose:** {{api_purpose}}
           - **Documentation:** {{api_docs_url}}
@@ -2189,12 +2209,12 @@ sections:
             title: Component Organization
             type: code
             language: text
-            template: '{{component_structure}}'
+            template: "{{component_structure}}"
           - id: component-template
             title: Component Template
             type: code
             language: typescript
-            template: '{{component_template}}'
+            template: "{{component_template}}"
       - id: state-management
         title: State Management Architecture
         instruction: Detail state management approach based on chosen solution.
@@ -2203,11 +2223,11 @@ sections:
             title: State Structure
             type: code
             language: typescript
-            template: '{{state_structure}}'
+            template: "{{state_structure}}"
           - id: state-patterns
             title: State Management Patterns
             type: bullet-list
-            template: '- {{pattern}}'
+            template: "- {{pattern}}"
       - id: routing-architecture
         title: Routing Architecture
         instruction: Define routing structure based on framework choice.
@@ -2216,12 +2236,12 @@ sections:
             title: Route Organization
             type: code
             language: text
-            template: '{{route_structure}}'
+            template: "{{route_structure}}"
           - id: protected-routes
             title: Protected Route Pattern
             type: code
             language: typescript
-            template: '{{protected_route_example}}'
+            template: "{{protected_route_example}}"
       - id: frontend-services
         title: Frontend Services Layer
         instruction: Define how frontend communicates with backend.
@@ -2230,12 +2250,12 @@ sections:
             title: API Client Setup
             type: code
             language: typescript
-            template: '{{api_client_setup}}'
+            template: "{{api_client_setup}}"
           - id: service-example
             title: Service Example
             type: code
             language: typescript
-            template: '{{service_example}}'
+            template: "{{service_example}}"
 
   - id: backend-architecture
     title: Backend Architecture
@@ -2253,12 +2273,12 @@ sections:
                 title: Function Organization
                 type: code
                 language: text
-                template: '{{function_structure}}'
+                template: "{{function_structure}}"
               - id: function-template
                 title: Function Template
                 type: code
                 language: typescript
-                template: '{{function_template}}'
+                template: "{{function_template}}"
           - id: traditional-server
             condition: Traditional server architecture chosen
             sections:
@@ -2266,12 +2286,12 @@ sections:
                 title: Controller/Route Organization
                 type: code
                 language: text
-                template: '{{controller_structure}}'
+                template: "{{controller_structure}}"
               - id: controller-template
                 title: Controller Template
                 type: code
                 language: typescript
-                template: '{{controller_template}}'
+                template: "{{controller_template}}"
       - id: database-architecture
         title: Database Architecture
         instruction: Define database schema and access patterns.
@@ -2280,12 +2300,12 @@ sections:
             title: Schema Design
             type: code
             language: sql
-            template: '{{database_schema}}'
+            template: "{{database_schema}}"
           - id: data-access-layer
             title: Data Access Layer
             type: code
             language: typescript
-            template: '{{repository_pattern}}'
+            template: "{{repository_pattern}}"
       - id: auth-architecture
         title: Authentication and Authorization
         instruction: Define auth implementation details.
@@ -2294,12 +2314,12 @@ sections:
             title: Auth Flow
             type: mermaid
             mermaid_type: sequence
-            template: '{{auth_flow_diagram}}'
+            template: "{{auth_flow_diagram}}"
           - id: auth-middleware
             title: Middleware/Guards
             type: code
             language: typescript
-            template: '{{auth_middleware}}'
+            template: "{{auth_middleware}}"
 
   - id: unified-project-structure
     title: Unified Project Structure
@@ -2375,12 +2395,12 @@ sections:
             title: Prerequisites
             type: code
             language: bash
-            template: '{{prerequisites_commands}}'
+            template: "{{prerequisites_commands}}"
           - id: initial-setup
             title: Initial Setup
             type: code
             language: bash
-            template: '{{setup_commands}}'
+            template: "{{setup_commands}}"
           - id: dev-commands
             title: Development Commands
             type: code
@@ -2436,15 +2456,15 @@ sections:
         title: CI/CD Pipeline
         type: code
         language: yaml
-        template: '{{cicd_pipeline_config}}'
+        template: "{{cicd_pipeline_config}}"
       - id: environments
         title: Environments
         type: table
         columns: [Environment, Frontend URL, Backend URL, Purpose]
         rows:
-          - ['Development', '{{dev_fe_url}}', '{{dev_be_url}}', 'Local development']
-          - ['Staging', '{{staging_fe_url}}', '{{staging_be_url}}', 'Pre-production testing']
-          - ['Production', '{{prod_fe_url}}', '{{prod_be_url}}', 'Live environment']
+          - ["Development", "{{dev_fe_url}}", "{{dev_be_url}}", "Local development"]
+          - ["Staging", "{{staging_fe_url}}", "{{staging_be_url}}", "Pre-production testing"]
+          - ["Production", "{{prod_fe_url}}", "{{prod_be_url}}", "Live environment"]
 
   - id: security-performance
     title: Security and Performance
@@ -2503,17 +2523,17 @@ sections:
             title: Frontend Tests
             type: code
             language: text
-            template: '{{frontend_test_structure}}'
+            template: "{{frontend_test_structure}}"
           - id: backend-tests
             title: Backend Tests
             type: code
             language: text
-            template: '{{backend_test_structure}}'
+            template: "{{backend_test_structure}}"
           - id: e2e-tests
             title: E2E Tests
             type: code
             language: text
-            template: '{{e2e_test_structure}}'
+            template: "{{e2e_test_structure}}"
       - id: test-examples
         title: Test Examples
         sections:
@@ -2521,17 +2541,17 @@ sections:
             title: Frontend Component Test
             type: code
             language: typescript
-            template: '{{frontend_test_example}}'
+            template: "{{frontend_test_example}}"
           - id: backend-test
             title: Backend API Test
             type: code
             language: typescript
-            template: '{{backend_test_example}}'
+            template: "{{backend_test_example}}"
           - id: e2e-test
             title: E2E Test
             type: code
             language: typescript
-            template: '{{e2e_test_example}}'
+            template: "{{e2e_test_example}}"
 
   - id: coding-standards
     title: Coding Standards
@@ -2541,22 +2561,22 @@ sections:
       - id: critical-rules
         title: Critical Fullstack Rules
         repeatable: true
-        template: '- **{{rule_name}}:** {{rule_description}}'
+        template: "- **{{rule_name}}:** {{rule_description}}"
         examples:
-          - '**Type Sharing:** Always define types in packages/shared and import from there'
-          - '**API Calls:** Never make direct HTTP calls - use the service layer'
-          - '**Environment Variables:** Access only through config objects, never process.env directly'
-          - '**Error Handling:** All API routes must use the standard error handler'
-          - '**State Updates:** Never mutate state directly - use proper state management patterns'
+          - "**Type Sharing:** Always define types in packages/shared and import from there"
+          - "**API Calls:** Never make direct HTTP calls - use the service layer"
+          - "**Environment Variables:** Access only through config objects, never process.env directly"
+          - "**Error Handling:** All API routes must use the standard error handler"
+          - "**State Updates:** Never mutate state directly - use proper state management patterns"
       - id: naming-conventions
         title: Naming Conventions
         type: table
         columns: [Element, Frontend, Backend, Example]
         rows:
-          - ['Components', 'PascalCase', '-', '`UserProfile.tsx`']
-          - ['Hooks', "camelCase with 'use'", '-', '`useAuth.ts`']
-          - ['API Routes', '-', 'kebab-case', '`/api/user-profile`']
-          - ['Database Tables', '-', 'snake_case', '`user_profiles`']
+          - ["Components", "PascalCase", "-", "`UserProfile.tsx`"]
+          - ["Hooks", "camelCase with 'use'", "-", "`useAuth.ts`"]
+          - ["API Routes", "-", "kebab-case", "`/api/user-profile`"]
+          - ["Database Tables", "-", "snake_case", "`user_profiles`"]
 
   - id: error-handling
     title: Error Handling Strategy
@@ -2567,7 +2587,7 @@ sections:
         title: Error Flow
         type: mermaid
         mermaid_type: sequence
-        template: '{{error_flow_diagram}}'
+        template: "{{error_flow_diagram}}"
       - id: error-format
         title: Error Response Format
         type: code
@@ -2586,12 +2606,12 @@ sections:
         title: Frontend Error Handling
         type: code
         language: typescript
-        template: '{{frontend_error_handler}}'
+        template: "{{frontend_error_handler}}"
       - id: backend-error-handling
         title: Backend Error Handling
         type: code
         language: typescript
-        template: '{{backend_error_handler}}'
+        template: "{{backend_error_handler}}"
 
   - id: monitoring
     title: Monitoring and Observability
@@ -2633,7 +2653,7 @@ template:
   output:
     format: markdown
     filename: docs/architecture.md
-    title: '{{project_name}} Brownfield Enhancement Architecture'
+    title: "{{project_name}} Brownfield Enhancement Architecture"
 
 workflow:
   mode: interactive
@@ -2691,11 +2711,11 @@ sections:
           - id: available-docs
             title: Available Documentation
             type: bullet-list
-            template: '- {{existing_docs_summary}}'
+            template: "- {{existing_docs_summary}}"
           - id: constraints
             title: Identified Constraints
             type: bullet-list
-            template: '- {{constraint}}'
+            template: "- {{constraint}}"
       - id: changelog
         title: Change Log
         type: table
@@ -2775,7 +2795,7 @@ sections:
         repeatable: true
         sections:
           - id: model
-            title: '{{model_name}}'
+            title: "{{model_name}}"
             template: |
               **Purpose:** {{model_purpose}}
               **Integration:** {{integration_with_existing}}
@@ -2818,7 +2838,7 @@ sections:
         repeatable: true
         sections:
           - id: component
-            title: '{{component_name}}'
+            title: "{{component_name}}"
             template: |
               **Responsibility:** {{component_description}}
               **Integration Points:** {{integration_points}}
@@ -2861,7 +2881,7 @@ sections:
         repeatable: true
         sections:
           - id: endpoint
-            title: '{{endpoint_name}}'
+            title: "{{endpoint_name}}"
             template: |
               - **Method:** {{http_method}}
               - **Endpoint:** {{endpoint_path}}
@@ -2872,12 +2892,12 @@ sections:
                 title: Request
                 type: code
                 language: json
-                template: '{{request_schema}}'
+                template: "{{request_schema}}"
               - id: response
                 title: Response
                 type: code
                 language: json
-                template: '{{response_schema}}'
+                template: "{{response_schema}}"
 
   - id: external-api-integration
     title: External API Integration
@@ -2886,7 +2906,7 @@ sections:
     repeatable: true
     sections:
       - id: external-api
-        title: '{{api_name}} API'
+        title: "{{api_name}} API"
         template: |
           - **Purpose:** {{api_purpose}}
           - **Documentation:** {{api_docs_url}}
@@ -2915,7 +2935,7 @@ sections:
         type: code
         language: plaintext
         instruction: Document relevant parts of current structure
-        template: '{{existing_structure_relevant_parts}}'
+        template: "{{existing_structure_relevant_parts}}"
       - id: new-file-organization
         title: New File Organization
         type: code
@@ -2990,7 +3010,7 @@ sections:
         title: Enhancement-Specific Standards
         condition: New patterns needed for enhancement
         repeatable: true
-        template: '- **{{standard_name}}:** {{standard_description}}'
+        template: "- **{{standard_name}}:** {{standard_description}}"
       - id: integration-rules
         title: Critical Integration Rules
         template: |

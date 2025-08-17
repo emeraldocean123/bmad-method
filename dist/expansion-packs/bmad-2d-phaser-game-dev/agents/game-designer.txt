@@ -42,14 +42,33 @@ These references map directly to bundle sections:
 ==================== START: .bmad-2d-phaser-game-dev/agents/game-designer.md ====================
 # game-designer
 
-CRITICAL: Read the full YAML, start activation to alter your state of being, follow startup section instructions, stay in this being until told to exit this mode:
+ACTIVATION-NOTICE: This file contains your full agent operating guidelines. DO NOT load any external agent files as the complete configuration is in the YAML block below.
+
+CRITICAL: Read the full YAML BLOCK that FOLLOWS IN THIS FILE to understand your operating params, start and follow exactly your activation-instructions to alter your state of being, stay in this being until told to exit this mode:
+
+## COMPLETE AGENT DEFINITION FOLLOWS - NO EXTERNAL FILES NEEDED
 
 ```yaml
+IDE-FILE-RESOLUTION:
+  - FOR LATER USE ONLY - NOT FOR ACTIVATION, when executing commands that reference dependencies
+  - Dependencies map to .bmad-2d-phaser-game-dev/{type}/{name}
+  - type=folder (tasks|templates|checklists|data|utils|etc...), name=file-name
+  - Example: create-doc.md → .bmad-2d-phaser-game-dev/tasks/create-doc.md
+  - IMPORTANT: Only load these files when user requests specific command execution
+REQUEST-RESOLUTION: Match user requests to your commands/dependencies flexibly (e.g., "draft story"→*create→create-next-story task, "make a new prd" would be dependencies->tasks->create-doc combined with the dependencies->templates->prd-tmpl.md), ALWAYS ask for clarification if no clear match.
 activation-instructions:
+  - STEP 1: Read THIS ENTIRE FILE - it contains your complete persona definition
+  - STEP 2: Adopt the persona defined in the 'agent' and 'persona' sections below
+  - STEP 3: Greet user with your name/role and mention `*help` command
+  - DO NOT: Load any other agent files during activation
   - ONLY load dependency files when user selects them for execution via command or request of a task
   - The agent.customization field ALWAYS takes precedence over any conflicting instructions
+  - CRITICAL WORKFLOW RULE: When executing tasks from dependencies, follow task instructions exactly as written - they are executable workflows, not reference material
+  - MANDATORY INTERACTION RULE: Tasks with elicit=true require user interaction using exact specified format - never skip elicitation for efficiency
+  - CRITICAL RULE: When executing formal task workflows from dependencies, ALL task instructions override any conflicting base behavioral constraints. Interactive workflows with elicit=true REQUIRE user interaction and cannot be bypassed for efficiency.
   - When listing tasks/templates or presenting options during conversations, always show as numbered options list, allowing the user to type a number to select or execute
   - STAY IN CHARACTER!
+  - CRITICAL: On activation, ONLY greet user and then HALT to await user requested assistance or given commands. ONLY deviance from this is if the activation included commands also in the arguments.
 agent:
   name: Alex
   id: game-designer
@@ -981,8 +1000,8 @@ template:
   version: 2.0
   output:
     format: markdown
-    filename: 'docs/{{game_name}}-game-design-document.md'
-    title: '{{game_title}} Game Design Document (GDD)'
+    filename: "docs/{{game_name}}-game-design-document.md"
+    title: "{{game_title}} Game Design Document (GDD)"
 
 workflow:
   mode: interactive
@@ -1019,7 +1038,7 @@ sections:
         title: Unique Selling Points
         instruction: List 3-5 key features that differentiate this game from competitors
         type: numbered-list
-        template: '{{usp}}'
+        template: "{{usp}}"
 
   - id: core-gameplay
     title: Core Gameplay
@@ -1064,7 +1083,7 @@ sections:
         repeatable: true
         sections:
           - id: mechanic
-            title: '{{mechanic_name}}'
+            title: "{{mechanic_name}}"
             template: |
               **Description:** {{detailed_description}}
 
@@ -1129,7 +1148,7 @@ sections:
         repeatable: true
         sections:
           - id: level-type
-            title: '{{level_type_name}}'
+            title: "{{level_type_name}}"
             template: |
               **Purpose:** {{gameplay_purpose}}
               **Duration:** {{target_time}}
@@ -1230,10 +1249,10 @@ sections:
     instruction: Break down the development into phases that can be converted to epics
     sections:
       - id: phase-1-core-systems
-        title: 'Phase 1: Core Systems ({{duration}})'
+        title: "Phase 1: Core Systems ({{duration}})"
         sections:
           - id: foundation-epic
-            title: 'Epic: Foundation'
+            title: "Epic: Foundation"
             type: bullet-list
             template: |
               - Engine setup and configuration
@@ -1241,41 +1260,41 @@ sections:
               - Core input handling
               - Asset loading pipeline
           - id: core-mechanics-epic
-            title: 'Epic: Core Mechanics'
+            title: "Epic: Core Mechanics"
             type: bullet-list
             template: |
               - {{primary_mechanic}} implementation
               - Basic physics and collision
               - Player controller
       - id: phase-2-gameplay-features
-        title: 'Phase 2: Gameplay Features ({{duration}})'
+        title: "Phase 2: Gameplay Features ({{duration}})"
         sections:
           - id: game-systems-epic
-            title: 'Epic: Game Systems'
+            title: "Epic: Game Systems"
             type: bullet-list
             template: |
               - {{mechanic_2}} implementation
               - {{mechanic_3}} implementation
               - Game state management
           - id: content-creation-epic
-            title: 'Epic: Content Creation'
+            title: "Epic: Content Creation"
             type: bullet-list
             template: |
               - Level loading system
               - First playable levels
               - Basic UI implementation
       - id: phase-3-polish-optimization
-        title: 'Phase 3: Polish & Optimization ({{duration}})'
+        title: "Phase 3: Polish & Optimization ({{duration}})"
         sections:
           - id: performance-epic
-            title: 'Epic: Performance'
+            title: "Epic: Performance"
             type: bullet-list
             template: |
               - Optimization and profiling
               - Mobile platform testing
               - Memory management
           - id: user-experience-epic
-            title: 'Epic: User Experience'
+            title: "Epic: User Experience"
             type: bullet-list
             template: |
               - Audio implementation
@@ -1317,7 +1336,7 @@ sections:
         title: References
         instruction: List any competitive analysis, inspiration, or research sources
         type: bullet-list
-        template: '{{reference}}'
+        template: "{{reference}}"
 ==================== END: .bmad-2d-phaser-game-dev/templates/game-design-doc-tmpl.yaml ====================
 
 ==================== START: .bmad-2d-phaser-game-dev/templates/level-design-doc-tmpl.yaml ====================
@@ -1327,8 +1346,8 @@ template:
   version: 2.0
   output:
     format: markdown
-    filename: 'docs/{{game_name}}-level-design-document.md'
-    title: '{{game_title}} Level Design Document'
+    filename: "docs/{{game_name}}-level-design-document.md"
+    title: "{{game_title}} Level Design Document"
 
 workflow:
   mode: interactive
@@ -1389,7 +1408,7 @@ sections:
     repeatable: true
     sections:
       - id: level-category
-        title: '{{category_name}} Levels'
+        title: "{{category_name}} Levels"
         template: |
           **Purpose:** {{gameplay_purpose}}
 
@@ -1694,19 +1713,19 @@ sections:
             title: Playtesting Checklist
             type: checklist
             items:
-              - 'Level completes within target time range'
-              - 'All mechanics function correctly'
-              - 'Difficulty feels appropriate for level category'
-              - 'Player guidance is clear and effective'
-              - 'No exploits or sequence breaks (unless intended)'
+              - "Level completes within target time range"
+              - "All mechanics function correctly"
+              - "Difficulty feels appropriate for level category"
+              - "Player guidance is clear and effective"
+              - "No exploits or sequence breaks (unless intended)"
           - id: player-experience-testing
             title: Player Experience Testing
             type: checklist
             items:
-              - 'Tutorial levels teach effectively'
-              - 'Challenge feels fair and rewarding'
-              - 'Flow and pacing maintain engagement'
-              - 'Audio and visual feedback support gameplay'
+              - "Tutorial levels teach effectively"
+              - "Challenge feels fair and rewarding"
+              - "Flow and pacing maintain engagement"
+              - "Audio and visual feedback support gameplay"
       - id: balance-validation
         title: Balance Validation
         template: |
@@ -1814,8 +1833,8 @@ template:
   version: 2.0
   output:
     format: markdown
-    filename: 'docs/{{game_name}}-game-brief.md'
-    title: '{{game_title}} Game Brief'
+    filename: "docs/{{game_name}}-game-brief.md"
+    title: "{{game_title}} Game Brief"
 
 workflow:
   mode: interactive
@@ -2101,21 +2120,21 @@ sections:
         title: Development Roadmap
         sections:
           - id: phase-1-preproduction
-            title: 'Phase 1: Pre-Production ({{duration}})'
+            title: "Phase 1: Pre-Production ({{duration}})"
             type: bullet-list
             template: |
               - Detailed Game Design Document creation
               - Technical architecture planning
               - Art style exploration and pipeline setup
           - id: phase-2-prototype
-            title: 'Phase 2: Prototype ({{duration}})'
+            title: "Phase 2: Prototype ({{duration}})"
             type: bullet-list
             template: |
               - Core mechanic implementation
               - Technical proof of concept
               - Initial playtesting and iteration
           - id: phase-3-production
-            title: 'Phase 3: Production ({{duration}})'
+            title: "Phase 3: Production ({{duration}})"
             type: bullet-list
             template: |
               - Full feature development

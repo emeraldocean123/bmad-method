@@ -42,14 +42,33 @@ These references map directly to bundle sections:
 ==================== START: .bmad-core/agents/ux-expert.md ====================
 # ux-expert
 
-CRITICAL: Read the full YAML, start activation to alter your state of being, follow startup section instructions, stay in this being until told to exit this mode:
+ACTIVATION-NOTICE: This file contains your full agent operating guidelines. DO NOT load any external agent files as the complete configuration is in the YAML block below.
+
+CRITICAL: Read the full YAML BLOCK that FOLLOWS IN THIS FILE to understand your operating params, start and follow exactly your activation-instructions to alter your state of being, stay in this being until told to exit this mode:
+
+## COMPLETE AGENT DEFINITION FOLLOWS - NO EXTERNAL FILES NEEDED
 
 ```yaml
+IDE-FILE-RESOLUTION:
+  - FOR LATER USE ONLY - NOT FOR ACTIVATION, when executing commands that reference dependencies
+  - Dependencies map to .bmad-core/{type}/{name}
+  - type=folder (tasks|templates|checklists|data|utils|etc...), name=file-name
+  - Example: create-doc.md → .bmad-core/tasks/create-doc.md
+  - IMPORTANT: Only load these files when user requests specific command execution
+REQUEST-RESOLUTION: Match user requests to your commands/dependencies flexibly (e.g., "draft story"→*create→create-next-story task, "make a new prd" would be dependencies->tasks->create-doc combined with the dependencies->templates->prd-tmpl.md), ALWAYS ask for clarification if no clear match.
 activation-instructions:
+  - STEP 1: Read THIS ENTIRE FILE - it contains your complete persona definition
+  - STEP 2: Adopt the persona defined in the 'agent' and 'persona' sections below
+  - STEP 3: Greet user with your name/role and mention `*help` command
+  - DO NOT: Load any other agent files during activation
   - ONLY load dependency files when user selects them for execution via command or request of a task
   - The agent.customization field ALWAYS takes precedence over any conflicting instructions
+  - CRITICAL WORKFLOW RULE: When executing tasks from dependencies, follow task instructions exactly as written - they are executable workflows, not reference material
+  - MANDATORY INTERACTION RULE: Tasks with elicit=true require user interaction using exact specified format - never skip elicitation for efficiency
+  - CRITICAL RULE: When executing formal task workflows from dependencies, ALL task instructions override any conflicting base behavioral constraints. Interactive workflows with elicit=true REQUIRE user interaction and cannot be bypassed for efficiency.
   - When listing tasks/templates or presenting options during conversations, always show as numbered options list, allowing the user to type a number to select or execute
   - STAY IN CHARACTER!
+  - CRITICAL: On activation, ONLY greet user and then HALT to await user requested assistance or given commands. ONLY deviance from this is if the activation included commands also in the arguments.
 agent:
   name: Sally
   id: ux-expert
@@ -71,6 +90,7 @@ persona:
     - You have a keen eye for detail and a deep empathy for users.
     - You're particularly skilled at translating user needs into beautiful, functional designs.
     - You can craft effective prompts for AI UI generation tools like v0, or Lovable.
+# All commands require * prefix when used (e.g., *help)
 commands:
   - help: Show numbered list of the following commands to allow selection
   - create-front-end-spec: run task create-doc.md with template front-end-spec-tmpl.yaml
@@ -343,7 +363,7 @@ template:
   output:
     format: markdown
     filename: docs/front-end-spec.md
-    title: '{{project_name}} UI/UX Specification'
+    title: "{{project_name}} UI/UX Specification"
 
 workflow:
   mode: interactive
@@ -371,29 +391,29 @@ sections:
         sections:
           - id: user-personas
             title: Target User Personas
-            template: '{{persona_descriptions}}'
+            template: "{{persona_descriptions}}"
             examples:
-              - '**Power User:** Technical professionals who need advanced features and efficiency'
-              - '**Casual User:** Occasional users who prioritize ease of use and clear guidance'
-              - '**Administrator:** System managers who need control and oversight capabilities'
+              - "**Power User:** Technical professionals who need advanced features and efficiency"
+              - "**Casual User:** Occasional users who prioritize ease of use and clear guidance"
+              - "**Administrator:** System managers who need control and oversight capabilities"
           - id: usability-goals
             title: Usability Goals
-            template: '{{usability_goals}}'
+            template: "{{usability_goals}}"
             examples:
-              - 'Ease of learning: New users can complete core tasks within 5 minutes'
-              - 'Efficiency of use: Power users can complete frequent tasks with minimal clicks'
-              - 'Error prevention: Clear validation and confirmation for destructive actions'
-              - 'Memorability: Infrequent users can return without relearning'
+              - "Ease of learning: New users can complete core tasks within 5 minutes"
+              - "Efficiency of use: Power users can complete frequent tasks with minimal clicks"
+              - "Error prevention: Clear validation and confirmation for destructive actions"
+              - "Memorability: Infrequent users can return without relearning"
           - id: design-principles
             title: Design Principles
-            template: '{{design_principles}}'
+            template: "{{design_principles}}"
             type: numbered-list
             examples:
-              - '**Clarity over cleverness** - Prioritize clear communication over aesthetic innovation'
+              - "**Clarity over cleverness** - Prioritize clear communication over aesthetic innovation"
               - "**Progressive disclosure** - Show only what's needed, when it's needed"
-              - '**Consistent patterns** - Use familiar UI patterns throughout the application'
-              - '**Immediate feedback** - Every action should have a clear, immediate response'
-              - '**Accessible by default** - Design for all users from the start'
+              - "**Consistent patterns** - Use familiar UI patterns throughout the application"
+              - "**Immediate feedback** - Every action should have a clear, immediate response"
+              - "**Accessible by default** - Design for all users from the start"
       - id: changelog
         title: Change Log
         type: table
@@ -415,7 +435,7 @@ sections:
         title: Site Map / Screen Inventory
         type: mermaid
         mermaid_type: graph
-        template: '{{sitemap_diagram}}'
+        template: "{{sitemap_diagram}}"
         examples:
           - |
             graph TD
@@ -455,7 +475,7 @@ sections:
     repeatable: true
     sections:
       - id: flow
-        title: '{{flow_name}}'
+        title: "{{flow_name}}"
         template: |
           **User Goal:** {{flow_goal}}
 
@@ -467,13 +487,13 @@ sections:
             title: Flow Diagram
             type: mermaid
             mermaid_type: graph
-            template: '{{flow_diagram}}'
+            template: "{{flow_diagram}}"
           - id: edge-cases
-            title: 'Edge Cases & Error Handling:'
+            title: "Edge Cases & Error Handling:"
             type: bullet-list
-            template: '- {{edge_case}}'
+            template: "- {{edge_case}}"
           - id: notes
-            template: '**Notes:** {{flow_notes}}'
+            template: "**Notes:** {{flow_notes}}"
 
   - id: wireframes-mockups
     title: Wireframes & Mockups
@@ -482,13 +502,13 @@ sections:
     elicit: true
     sections:
       - id: design-files
-        template: '**Primary Design Files:** {{design_tool_link}}'
+        template: "**Primary Design Files:** {{design_tool_link}}"
       - id: key-screen-layouts
         title: Key Screen Layouts
         repeatable: true
         sections:
           - id: screen
-            title: '{{screen_name}}'
+            title: "{{screen_name}}"
             template: |
               **Purpose:** {{screen_purpose}}
 
@@ -508,13 +528,13 @@ sections:
     elicit: true
     sections:
       - id: design-system-approach
-        template: '**Design System Approach:** {{design_system_approach}}'
+        template: "**Design System Approach:** {{design_system_approach}}"
       - id: core-components
         title: Core Components
         repeatable: true
         sections:
           - id: component
-            title: '{{component_name}}'
+            title: "{{component_name}}"
             template: |
               **Purpose:** {{component_purpose}}
 
@@ -531,19 +551,19 @@ sections:
     sections:
       - id: visual-identity
         title: Visual Identity
-        template: '**Brand Guidelines:** {{brand_guidelines_link}}'
+        template: "**Brand Guidelines:** {{brand_guidelines_link}}"
       - id: color-palette
         title: Color Palette
         type: table
-        columns: ['Color Type', 'Hex Code', 'Usage']
+        columns: ["Color Type", "Hex Code", "Usage"]
         rows:
-          - ['Primary', '{{primary_color}}', '{{primary_usage}}']
-          - ['Secondary', '{{secondary_color}}', '{{secondary_usage}}']
-          - ['Accent', '{{accent_color}}', '{{accent_usage}}']
-          - ['Success', '{{success_color}}', 'Positive feedback, confirmations']
-          - ['Warning', '{{warning_color}}', 'Cautions, important notices']
-          - ['Error', '{{error_color}}', 'Errors, destructive actions']
-          - ['Neutral', '{{neutral_colors}}', 'Text, borders, backgrounds']
+          - ["Primary", "{{primary_color}}", "{{primary_usage}}"]
+          - ["Secondary", "{{secondary_color}}", "{{secondary_usage}}"]
+          - ["Accent", "{{accent_color}}", "{{accent_usage}}"]
+          - ["Success", "{{success_color}}", "Positive feedback, confirmations"]
+          - ["Warning", "{{warning_color}}", "Cautions, important notices"]
+          - ["Error", "{{error_color}}", "Errors, destructive actions"]
+          - ["Neutral", "{{neutral_colors}}", "Text, borders, backgrounds"]
       - id: typography
         title: Typography
         sections:
@@ -556,13 +576,13 @@ sections:
           - id: type-scale
             title: Type Scale
             type: table
-            columns: ['Element', 'Size', 'Weight', 'Line Height']
+            columns: ["Element", "Size", "Weight", "Line Height"]
             rows:
-              - ['H1', '{{h1_size}}', '{{h1_weight}}', '{{h1_line}}']
-              - ['H2', '{{h2_size}}', '{{h2_weight}}', '{{h2_line}}']
-              - ['H3', '{{h3_size}}', '{{h3_weight}}', '{{h3_line}}']
-              - ['Body', '{{body_size}}', '{{body_weight}}', '{{body_line}}']
-              - ['Small', '{{small_size}}', '{{small_weight}}', '{{small_line}}']
+              - ["H1", "{{h1_size}}", "{{h1_weight}}", "{{h1_line}}"]
+              - ["H2", "{{h2_size}}", "{{h2_weight}}", "{{h2_line}}"]
+              - ["H3", "{{h3_size}}", "{{h3_weight}}", "{{h3_line}}"]
+              - ["Body", "{{body_size}}", "{{body_weight}}", "{{body_line}}"]
+              - ["Small", "{{small_size}}", "{{small_weight}}", "{{small_line}}"]
       - id: iconography
         title: Iconography
         template: |
@@ -583,7 +603,7 @@ sections:
     sections:
       - id: compliance-target
         title: Compliance Target
-        template: '**Standard:** {{compliance_standard}}'
+        template: "**Standard:** {{compliance_standard}}"
       - id: key-requirements
         title: Key Requirements
         template: |
@@ -603,7 +623,7 @@ sections:
           - Form labels: {{form_requirements}}
       - id: testing-strategy
         title: Testing Strategy
-        template: '{{accessibility_testing}}'
+        template: "{{accessibility_testing}}"
 
   - id: responsiveness
     title: Responsiveness Strategy
@@ -613,12 +633,12 @@ sections:
       - id: breakpoints
         title: Breakpoints
         type: table
-        columns: ['Breakpoint', 'Min Width', 'Max Width', 'Target Devices']
+        columns: ["Breakpoint", "Min Width", "Max Width", "Target Devices"]
         rows:
-          - ['Mobile', '{{mobile_min}}', '{{mobile_max}}', '{{mobile_devices}}']
-          - ['Tablet', '{{tablet_min}}', '{{tablet_max}}', '{{tablet_devices}}']
-          - ['Desktop', '{{desktop_min}}', '{{desktop_max}}', '{{desktop_devices}}']
-          - ['Wide', '{{wide_min}}', '-', '{{wide_devices}}']
+          - ["Mobile", "{{mobile_min}}", "{{mobile_max}}", "{{mobile_devices}}"]
+          - ["Tablet", "{{tablet_min}}", "{{tablet_max}}", "{{tablet_devices}}"]
+          - ["Desktop", "{{desktop_min}}", "{{desktop_max}}", "{{desktop_devices}}"]
+          - ["Wide", "{{wide_min}}", "-", "{{wide_devices}}"]
       - id: adaptation-patterns
         title: Adaptation Patterns
         template: |
@@ -637,11 +657,11 @@ sections:
     sections:
       - id: motion-principles
         title: Motion Principles
-        template: '{{motion_principles}}'
+        template: "{{motion_principles}}"
       - id: key-animations
         title: Key Animations
         repeatable: true
-        template: '- **{{animation_name}}:** {{animation_description}} (Duration: {{duration}}, Easing: {{easing}})'
+        template: "- **{{animation_name}}:** {{animation_description}} (Duration: {{duration}}, Easing: {{easing}})"
 
   - id: performance
     title: Performance Considerations
@@ -655,7 +675,7 @@ sections:
           - **Animation FPS:** {{animation_goal}}
       - id: design-strategies
         title: Design Strategies
-        template: '{{performance_strategies}}'
+        template: "{{performance_strategies}}"
 
   - id: next-steps
     title: Next Steps
@@ -670,17 +690,17 @@ sections:
       - id: immediate-actions
         title: Immediate Actions
         type: numbered-list
-        template: '{{action}}'
+        template: "{{action}}"
       - id: design-handoff-checklist
         title: Design Handoff Checklist
         type: checklist
         items:
-          - 'All user flows documented'
-          - 'Component inventory complete'
-          - 'Accessibility requirements defined'
-          - 'Responsive strategy clear'
-          - 'Brand guidelines incorporated'
-          - 'Performance goals established'
+          - "All user flows documented"
+          - "Component inventory complete"
+          - "Accessibility requirements defined"
+          - "Responsive strategy clear"
+          - "Brand guidelines incorporated"
+          - "Performance goals established"
 
   - id: checklist-results
     title: Checklist Results

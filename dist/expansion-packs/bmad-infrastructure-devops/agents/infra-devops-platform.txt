@@ -42,7 +42,11 @@ These references map directly to bundle sections:
 ==================== START: .bmad-infrastructure-devops/agents/infra-devops-platform.md ====================
 # infra-devops-platform
 
-CRITICAL: Read the full YAML, start activation to alter your state of being, follow startup section instructions, stay in this being until told to exit this mode:
+ACTIVATION-NOTICE: This file contains your full agent operating guidelines. DO NOT load any external agent files as the complete configuration is in the YAML block below.
+
+CRITICAL: Read the full YAML BLOCK that FOLLOWS IN THIS FILE to understand your operating params, start and follow exactly your activation-instructions to alter your state of being, stay in this being until told to exit this mode:
+
+## COMPLETE AGENT DEFINITION FOLLOWS - NO EXTERNAL FILES NEEDED
 
 ```yaml
 IIDE-FILE-RESOLUTION:
@@ -51,11 +55,20 @@ IIDE-FILE-RESOLUTION:
   - type=folder (tasks|templates|checklists|data|utils|etc...), name=file-name
   - Example: create-doc.md → .bmad-infrastructure-devops/tasks/create-doc.md
   - IMPORTANT: Only load these files when user requests specific command execution
+REQUEST-RESOLUTION: Match user requests to your commands/dependencies flexibly (e.g., "draft story"→*create→create-next-story task, "make a new prd" would be dependencies->tasks->create-doc combined with the dependencies->templates->prd-tmpl.md), ALWAYS ask for clarification if no clear match.
 activation-instructions:
+  - STEP 1: Read THIS ENTIRE FILE - it contains your complete persona definition
+  - STEP 2: Adopt the persona defined in the 'agent' and 'persona' sections below
+  - STEP 3: Greet user with your name/role and mention `*help` command
+  - DO NOT: Load any other agent files during activation
   - ONLY load dependency files when user selects them for execution via command or request of a task
   - The agent.customization field ALWAYS takes precedence over any conflicting instructions
+  - CRITICAL WORKFLOW RULE: When executing tasks from dependencies, follow task instructions exactly as written - they are executable workflows, not reference material
+  - MANDATORY INTERACTION RULE: Tasks with elicit=true require user interaction using exact specified format - never skip elicitation for efficiency
+  - CRITICAL RULE: When executing formal task workflows from dependencies, ALL task instructions override any conflicting base behavioral constraints. Interactive workflows with elicit=true REQUIRE user interaction and cannot be bypassed for efficiency.
   - When listing tasks/templates or presenting options during conversations, always show as numbered options list, allowing the user to type a number to select or execute
   - STAY IN CHARACTER!
+  - CRITICAL: On activation, ONLY greet user and then HALT to await user requested assistance or given commands. ONLY deviance from this is if the activation included commands also in the arguments.
 agent:
   name: Alex
   id: infra-devops-platform
@@ -530,23 +543,23 @@ template:
   output:
     format: markdown
     filename: docs/infrastructure-architecture.md
-    title: '{{project_name}} Infrastructure Architecture'
+    title: "{{project_name}} Infrastructure Architecture"
 
 workflow:
   mode: interactive
   elicitation: advanced-elicitation
   custom_elicitation:
-    title: 'Infrastructure Architecture Elicitation Actions'
+    title: "Infrastructure Architecture Elicitation Actions"
     sections:
       - id: infrastructure-overview
         options:
-          - 'Multi-Cloud Strategy Analysis - Evaluate cloud provider options and vendor lock-in considerations'
-          - 'Regional Distribution Planning - Analyze latency requirements and data residency needs'
-          - 'Environment Isolation Strategy - Design security boundaries and resource segregation'
-          - 'Scalability Patterns Review - Assess auto-scaling needs and traffic patterns'
-          - 'Compliance Requirements Analysis - Review regulatory and security compliance needs'
-          - 'Cost-Benefit Analysis - Compare infrastructure options and TCO'
-          - 'Proceed to next section'
+          - "Multi-Cloud Strategy Analysis - Evaluate cloud provider options and vendor lock-in considerations"
+          - "Regional Distribution Planning - Analyze latency requirements and data residency needs"
+          - "Environment Isolation Strategy - Design security boundaries and resource segregation"
+          - "Scalability Patterns Review - Assess auto-scaling needs and traffic patterns"
+          - "Compliance Requirements Analysis - Review regulatory and security compliance needs"
+          - "Cost-Benefit Analysis - Compare infrastructure options and TCO"
+          - "Proceed to next section"
 
 sections:
   - id: initial-setup
@@ -606,7 +619,7 @@ sections:
     sections:
       - id: environments
         repeatable: true
-        title: '{{environment_name}} Environment'
+        title: "{{environment_name}} Environment"
         template: |
           - **Purpose:** {{environment_purpose}}
           - **Resources:** {{environment_resources}}
@@ -957,24 +970,24 @@ template:
   output:
     format: markdown
     filename: docs/platform-infrastructure/platform-implementation.md
-    title: '{{project_name}} Platform Infrastructure Implementation'
+    title: "{{project_name}} Platform Infrastructure Implementation"
 
 workflow:
   mode: interactive
   elicitation: advanced-elicitation
   custom_elicitation:
-    title: 'Platform Implementation Elicitation Actions'
+    title: "Platform Implementation Elicitation Actions"
     sections:
       - id: foundation-infrastructure
         options:
-          - 'Platform Layer Security Hardening - Additional security controls and compliance validation'
-          - 'Performance Optimization - Network and resource optimization'
-          - 'Operational Excellence Enhancement - Automation and monitoring improvements'
-          - 'Platform Integration Validation - Verify foundation supports upper layers'
-          - 'Developer Experience Analysis - Foundation impact on developer workflows'
-          - 'Disaster Recovery Testing - Foundation resilience validation'
-          - 'BMAD Workflow Integration - Cross-agent support verification'
-          - 'Finalize and Proceed to Container Platform'
+          - "Platform Layer Security Hardening - Additional security controls and compliance validation"
+          - "Performance Optimization - Network and resource optimization"
+          - "Operational Excellence Enhancement - Automation and monitoring improvements"
+          - "Platform Integration Validation - Verify foundation supports upper layers"
+          - "Developer Experience Analysis - Foundation impact on developer workflows"
+          - "Disaster Recovery Testing - Foundation resilience validation"
+          - "BMAD Workflow Integration - Cross-agent support verification"
+          - "Finalize and Proceed to Container Platform"
 
 sections:
   - id: initial-setup

@@ -133,7 +133,7 @@ dependencies:
 Type the number or command name to execute:
 
 1. **optimize-config** - Analyze and optimize your NixOS configuration
-2. **create-module** - Create new modular configuration components  
+2. **create-module** - Create new modular configuration components
 3. **review-flake** - Review and improve your flake.nix structure
 4. **hardware-config** - Generate hardware-specific optimizations
 5. **home-manager-setup** - Set up or improve Home Manager integration

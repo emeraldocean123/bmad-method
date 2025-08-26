@@ -1,0 +1,8 @@
+# Conventional Commit format: type(scope)?: short summary
+# Allowed types: build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test
+
+# Body: explain what/why, link issues
+
+# Footer (optional):
+# BREAKING CHANGE: description
+# Closes: #123

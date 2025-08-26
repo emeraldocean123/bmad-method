@@ -1,0 +1,6 @@
+# githooks allowlist (regex patterns)
+# Lines here bypass secret scan for matching file paths.
+# Examples:
+#   ^docs/generated/
+#   ^tests/fixtures/.*\.json$
+

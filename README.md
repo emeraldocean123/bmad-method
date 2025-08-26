@@ -99,3 +99,7 @@ _This fork extends BMAD Method with specialized NixOS expertise and project-spec
 - Follow Conventional Commits: `type(scope)?: subject`.
 - Commit template: repo-local `.commit-template.txt` is configured; `git commit` opens with guidance.
 - Shared hooks: global `core.hooksPath` points to `Documents/dev/dotfiles/githooks` (pre-commit secret scan, commit-msg enforcement).
+
+## Review Routing
+
+- CODEOWNERS requests reviews from `@emeraldocean123` on pull requests.

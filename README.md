@@ -94,3 +94,8 @@ MIT License - See original BMAD Method repository for full license details.
 ---
 
 _This fork extends BMAD Method with specialized NixOS expertise and project-specific agent configurations for enhanced development workflows._
+## Contributing
+
+- Follow Conventional Commits: `type(scope)?: subject`.
+- Commit template: repo-local `.commit-template.txt` is configured; `git commit` opens with guidance.
+- Shared hooks: global `core.hooksPath` points to `Documents/dev/dotfiles/githooks` (pre-commit secret scan, commit-msg enforcement).

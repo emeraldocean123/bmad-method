@@ -1,0 +1,11 @@
+[formatter.nix]
+command = "alejandra"
+includes = ["*.nix"]
+options = []
+
+# Example: add other languages if needed
+# [formatter.json]
+# command = "jq"
+# options = ["-S"]
+# includes = ["*.json"]
+

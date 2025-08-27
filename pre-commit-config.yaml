@@ -1,0 +1,30 @@
+repos:
+  - repo: local
+    hooks:
+      - id: treefmt
+        name: treefmt
+        entry: treefmt
+        language: system
+        types_or: [nix]
+
+      - id: statix-fix
+        name: statix --fix
+        entry: statix fix
+        language: system
+        types_or: [nix]
+
+      - id: deadnix-fix
+        name: deadnix --fix
+        entry: deadnix --fix
+        language: system
+        types_or: [nix]
+
+# Optional AI step (off by default). To enable, add another local hook pointing to scripts/ai-fix.sh
+#  - repo: local
+#    hooks:
+#      - id: ai-fix
+#        name: ai-fix (experimental)
+#        entry: ./scripts/ai-fix.sh
+#        language: system
+#        pass_filenames: false
+

@@ -1,0 +1,22 @@
+# AI Assistant Rules for bookmark-cleaner
+
+## Prohibited Actions
+- **NEVER** create or suggest GitHub Actions workflows
+- **NEVER** create `.github` directories or any files within them
+- **NEVER** create automated CI/CD pipelines
+- **NEVER** create or modify any workflow files (*.yml, *.yaml) in `.github/workflows/`
+- **NEVER** suggest or implement automated testing via GitHub Actions
+- **NEVER** create CODEOWNERS, FUNDING.yml, or ISSUE_TEMPLATE files
+
+## Repository Guidelines
+- This is a local development repository
+- All testing and building should be done locally
+- No automated GitHub workflows are desired or permitted
+- Focus on code quality and manual testing approaches
+
+## Enforcement
+These rules apply to:
+- Claude (Anthropic)
+- OpenAI Codex/Copilot
+- Any other AI coding assistants
+- All automated tools and bots

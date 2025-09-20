@@ -18,7 +18,7 @@ fix:
 pre-commit:
     pre-commit run -a || true
 
-# Optional AI fixer (placeholder): requires scripts/ai-fix.sh wiring to a local model or API
+# Optional: AI fixer (uses shared scripts repo if available)
 ai-fix:
-    ./scripts/ai-fix.sh || true
-
+    script="$HOME/Documents/dev/shared/scripts/nix/ai-fix.sh"
+    if [ -x "$script" ]; then "$script"; else echo "AI fixer not available at $script" >&2; fi

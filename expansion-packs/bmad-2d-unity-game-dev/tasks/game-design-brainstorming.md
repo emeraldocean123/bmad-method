@@ -1,4 +1,8 @@
-# Game Design Brainstorming Techniques Task
+# Game Design Brainstorming Techniques Task (Unity)
+
+> **Sync Note:** This Unity task mirrors the Phaser game design brainstorming workflow. Keep both files updated together so cross-engine agents stay aligned.
+
+> **Unity Focus:** Use Unity terminology (prefabs, ScriptableObjects, scenes) when facilitating sessions, and highlight where engine tooling (Timeline, Cinemachine, Unity Gaming Services) can support ideas.
 
 This task provides a comprehensive toolkit of creative brainstorming techniques specifically designed for game design ideation and innovative thinking. The game designer can use these techniques to facilitate productive brainstorming sessions focused on game mechanics, player experience, and creative concepts.
 
@@ -288,3 +292,11 @@ This task provides a comprehensive toolkit of creative brainstorming techniques 
 - Consider accessibility and inclusivity from the start
 - Balance innovation with market viability
 - Plan for iteration based on player feedback
+
+## Unity Implementation Considerations
+
+- Map brainstormed mechanics to Unity systems (Input System, Animation Rigging, Cinemachine).
+- Document required prefabs, ScriptableObjects, and scene setup for each promising idea.
+- Flag any concepts needing custom editor tooling, DOTS, or third-party assets.
+- Highlight testing strategy: play mode tests, automated validation, profiler checkpoints.
+- Capture cross-platform implications (PC, console, mobile) and Unity build pipeline needs.

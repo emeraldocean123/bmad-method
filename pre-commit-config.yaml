@@ -19,12 +19,11 @@ repos:
         language: system
         types_or: [nix]
 
-# Optional AI step (off by default). To enable, add another local hook pointing to scripts/ai-fix.sh
+# Optional AI step (off by default). To enable, add another local hook pointing to $HOME/Documents/dev/shared/scripts/nix/ai-fix.sh
 #  - repo: local
 #    hooks:
 #      - id: ai-fix
 #        name: ai-fix (experimental)
-#        entry: ./scripts/ai-fix.sh
+#        entry: $HOME/Documents/dev/shared/scripts/nix/ai-fix.sh
 #        language: system
 #        pass_filenames: false
-

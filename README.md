@@ -103,3 +103,11 @@ _This fork extends BMAD Method with specialized NixOS expertise and project-spec
 ## Review Routing
 
 - CODEOWNERS requests reviews from `@emeraldocean123` on pull requests.
+## Shared Tooling Alignment
+
+Local helper scripts previously bundled under `scripts/` now live in `~/Documents/dev/shared` so all projects share one implementation. Key locations:
+- Nix helpers (deadnix, statix automation): `~/Documents/dev/shared/scripts/nix/`
+- Bootstrap and maintenance workflows: `~/Documents/dev/shared/scripts/{bootstrap,maintenance}`
+
+When running recipes like just ai-fix or wiring optional pre-commit hooks, ensure the shared repo exists so the scripts resolve correctly.
+
